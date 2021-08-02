@@ -1,0 +1,42 @@
+package programmer.level1.complete;
+
+import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+/*문제 설명
+    함수 solution은 정수 n을 매개변수로 입력받습니다.
+    n의 각 자릿수를 큰것부터 작은 순으로 정렬한 새로운 정수를 리턴해주세요.
+    예를들어 n이 118372면 873211을 리턴하면 됩니다.
+제한 조건
+    n은 1이상 8000000000 이하인 자연수입니다.
+입출력 예
+    n	return
+    118372	873211
+ */
+public class SortIntDesc {
+
+    @Test
+    public void main(){
+        assertThat(solution(118372)).isEqualTo(873211);
+    }
+    public long solution(long n) {
+        String[] results = String.valueOf(n).split("");
+        Long[] intResults = new Long[results.length];
+        for (int i = 0; i < results.length; i++) {
+            intResults[i] = Long.valueOf(results[i]);
+        }
+        List<Long> integerList = Arrays.asList(intResults);
+        Collections.sort(integerList, Collections.reverseOrder());
+        StringBuilder sb = new StringBuilder();
+        for(Long value : integerList){
+            sb.append(value);
+        }
+        return Long.valueOf(sb.toString());
+    }
+}
+
