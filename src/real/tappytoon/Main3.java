@@ -1,4 +1,4 @@
-package programmer.level1.tappytoon;
+package real.tappytoon;
 
 import org.junit.Test;
 
