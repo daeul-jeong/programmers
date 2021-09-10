@@ -1,5 +1,9 @@
 package programmer.level1.ing;
 
+import java.util.Locale;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 /*
 문제 설명
     문자열 s는 한 개 이상의 단어로 구성되어 있습니다.
@@ -19,28 +23,45 @@ package programmer.level1.ing;
 */
 public class StrangerString {
     public static void main(String[] args) {
-        String result = solution("  aaabbbcc");
-        System.out.println(result);
+//        String result = solution("  aaabbbcc");
+//        String result = solution("  aaabbbcc");
+        assertThat(solution("try hello world")).isEqualTo("TrY HeLlO WoRlD");
     }
 
     public static String solution(String s) {
-        String new_s = s.replaceAll(" ", "_");
-        System.out.println(new_s);
+        String[] splits = s.split(" ");
         StringBuilder sb = new StringBuilder();
-        String[] newArr = new_s.split("", -1);
-        for (int i = 0; i < newArr.length; i++) {
-            if(newArr[i].equalsIgnoreCase("_")){
-                sb.append(" ");
-                continue;
+        for(String str : splits){
+            String[] c = str.split("");
+            for (int i = 0; i < c.length; i++) {
+                if(i % 2 == 1){ //홀수, 소문자
+                    sb.append(c[i].toLowerCase());
+                }else {
+                    sb.append(c[i].toUpperCase());
+                }
             }
-            if (i % 2 == 0) {
-                sb.append(newArr[i].toUpperCase());
-            } else {
-                sb.append(newArr[i].toLowerCase());
-            }
+            sb.append(" ");
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
+
+//    public static String solution(String s) {
+//        String new_s = s.replaceAll(" ", "_");
+//        StringBuilder sb = new StringBuilder();
+//        String[] newArr = new_s.split("", -1);
+//        for (int i = 0; i < newArr.length; i++) {
+//            if(newArr[i].equalsIgnoreCase("_")){
+//                sb.append(" ");
+//                continue;
+//            }
+//            if (i % 2 == 0) {
+//                sb.append(newArr[i].toUpperCase());
+//            } else {
+//                sb.append(newArr[i].toLowerCase());
+//            }
+//        }
+//        return sb.toString();
+//    }
 
 //    public static String solution(String s) {
 //        String[] words = s.split(" ");
