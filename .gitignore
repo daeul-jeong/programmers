@@ -25,3 +25,5 @@ hs_err_pid*
 /src/real/tapas/
 /src/**/*.class
 /src/real/tapas/
+/src/real/
+/target/
